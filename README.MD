@@ -1,8 +1,8 @@
 # CSC 415 - Project 2 - File copy
 
-## Student Name : Name here
+## Student Name : Stephanie Sechrist
 
-## Student ID   : ID here
+## Student ID   : 918679078
 
 ## Build Instructions
 
