@@ -1,0 +1,3 @@
+/home/csc415/Documents/HW2/csc415-p2-stephlsechrist/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/csc415/Documents/HW2/csc415-p2-stephlsechrist/cmake-build-debug/CMakeFiles/csc415_p2_stephlsechrist.dir
+/home/csc415/Documents/HW2/csc415-p2-stephlsechrist/cmake-build-debug/CMakeFiles/edit_cache.dir

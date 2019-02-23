@@ -53,58 +53,63 @@ main(int argc, char const *argv[])
     printf("Enter the name of the file to copy to: \n");
     scanf("%s", destFile);
 
-//    sourceFileDescriptor = creat(sourceFile, 0666);
     sourceFileDescriptor = open(sourceFile, O_RDONLY);
-    printf("source file descriptor made\n");
+    // if sourceFileDescriptor negative, open of sourceFile
+    // returned negative. error
     if (sourceFileDescriptor < 0){
-        perror("Open file to be copied failed.\n");
+        perror("Open file to be copied failed");
         return -45;
     }
 
-    printf("source file successfully opened\n");
 
 //    destFileDescriptor = creat(destFile, 0666);
     destFileDescriptor = open(destFile, O_CREAT | O_WRONLY | O_TRUNC, 0666);
+    // if destFile does not exist, it will be created.; but
+    // if desteFileDescriptor negative, open of desteFile
+    // returned negative. error
     if (destFileDescriptor < 0){
-        perror("Open file to be copied to failed.\n");
+        perror("Open file to be copied to failed");
         return -45;
     }
 
-    printf("destination file successfully opened or created\n");
-
+    // bytesRead will contain how many bytes read from sourceFile with read
+    // will be negative if read encountered an error.
     ssize_t bytesRead = read(sourceFileDescriptor, buffer, sizeof(buffer));
-    printf("read success before while loop\n");
 
     int totalBytes = 0;
+    // while loop makes sure read does not error
     while ( bytesRead > 0 ){
-        printf("enter while loop\n");
+        // bytesCopied will contain how many bytes copied to destFile with write
+        // will be negative if write encountered an error
+        // will copy number of bytes read (cast bytesRead from signed to unsigned int)
         ssize_t bytesCopied = write(destFileDescriptor, buffer, (size_t)bytesRead);
-        printf("write to dest file success\n");
+
+        // keep track of totalBytes to show user
         totalBytes += (size_t)bytesCopied;
 
-        printf("total bytes copied so far: %d\n", totalBytes);
-
+        // bytes copied should equal bytes read
+        // if not, error occured during copy.
         if (bytesCopied != bytesRead){
-            printf("bytes copied != bytes read\n");
-            perror("There was an error during copy.\n");
+            perror("There was an error during copy");
             return -45;
         }
 
+        // read more of sourceFile
         bytesRead = read(sourceFileDescriptor, buffer, sizeof(buffer));
-        printf("updated bytes read, read more of file.\n");
 
     }
-    printf("exited while loop\n");
 
+    // if while loop exits because bytesRead < 0, then
+    // copy not successful
+    // successful copy when while loop exits when bytesRead = 0
     if (bytesRead < 0){
-        perror("Error after while loop.\n");
+        perror("There was an error during copy");
         return -45;
     }
 
+    // close file descriptors so they may be reused
     close(sourceFileDescriptor);
-    printf("source file descriptor closed\n");
     close(destFileDescriptor);
-    printf("destination file descriptor closed\n");
 
     // if gotten to this point, successful
     printf("File Copy Successful, %d bytes copied\n", totalBytes);
