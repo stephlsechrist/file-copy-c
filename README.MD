@@ -5,8 +5,18 @@
 ## Student ID   : 918679078
 
 ## Build Instructions
+Clone the repo into your local directory. In Linux terminal, type
+```
+make
+```
+to compile the program. This will follow the instructions in Makefile to build program. 
 
 ## Run Instructions
+Next, type
+```
+./fc
+```
+to run the file copy program in the terminal.
 
 ## strace/dtruss output (annotation surrounded by ** [NOTE] **
 ```

@@ -1,3 +1,18 @@
+/* ***********************************
+filecopy.c compiles to fc
+
+Created By: Stephanie Sechrist
+Last Modified: February 21, 2019
+
+The program takes a file from user input
+and copies into a file specified by the user
+in the current working directory.
+If the file to be copied to does not exist,
+it is created with read and write permissions. 
+If the file to be copied to does exist, it is
+overwritten with the new content. 
+************************************** */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
