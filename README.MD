@@ -9,6 +9,7 @@
 ## Run Instructions
 
 ## strace/dtruss output (annotation surrounded by ** [NOTE] **
+```
 csc415@csc415:~/Documents/HW2/csc415-p2-stephlsechrist$ strace ./fc
 execve("./fc", ["./fc"], 0x7ffdf653c8c0 /* 49 vars */) = 0
         ** execve() executes ./fc. no error **
@@ -155,5 +156,6 @@ File Copy Successful, 180 bytes copied
   0.00    0.000000           0         4           openat
 ------ ----------- ----------- --------- --------- ----------------
 100.00    0.000000                    57         4 total
+```
 
 
