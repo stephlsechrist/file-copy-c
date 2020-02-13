@@ -2,8 +2,6 @@
 
 ## Student Name : Stephanie Sechrist
 
-## Student ID   : 918679078
-
 ## Build Instructions
 Clone the repo into your local directory. In Linux terminal, type
 ```
